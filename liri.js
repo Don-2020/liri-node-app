@@ -19,3 +19,7 @@ switch (firstCommand) {
         }
     break;
 }
+
+function spotifyThisSong(){
+    
+}
