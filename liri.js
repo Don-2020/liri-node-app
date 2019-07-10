@@ -1,13 +1,13 @@
 // Read and set environment variables
 require("dotenv").config();
 var Spotify = require('node-spotify-api');
-var keys = require("./keys.js");
+var keys = require("../liri-node-app/key");
 
 
 var spotify = new Spotify(keys.spotify);
 
 var firstCommand = process.argv[2];
-var secondCommand = process.argv[3];
+var secondCommand = process.argv[3].split().join(" ");
 
 switch (firstCommand) {
     case ('spotify-this-song'):
@@ -20,6 +20,24 @@ switch (firstCommand) {
     break;
 }
 
-function spotifyThisSong(){
+function spotifyThisSong(song){
     
+    spotify.search({ type: 'track', query: song, limit: 5}, function(err, data) {
+        if ( !err ) {
+            for(var i = 0; i < data.tracks.items.length; i++){
+                var songData = data.tracks.items[i];
+                console.log("Artist: " + songData.artists);
+                console.log("Song: " + songData.name)
+                console.log("Preview URL: " + songData.external_urls)
+                console.log("Album: " + songData.album.name)
+                console.log("-------------------------------------")
+            }
+        }
+        else{
+            console.log('Error occurred: ' + err);
+            return;
+        }
+     
+        
+    });
 }
