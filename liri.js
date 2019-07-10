@@ -1,5 +1,5 @@
 // Read and set environment variables
-require("dotenv").config();
+conts dotenv = require("dotenv").config();
 var Spotify = require('node-spotify-api');
 var keys = require("../liri-node-app/key");
 var request = require('request');
@@ -60,5 +60,20 @@ function spotifyThisSong(song) {
 
 
 function findMovie(movie) {
-    var omdb
+    var omdbURL = 'http://www.omdbapi.com/?t=' + movie + '&apikey=' + omdbKey + '&plot=short&tomatoes=true';
+
+    request(omdbURL, function(error, response, body){
+        if(!error && response.statusCode == 200){
+            var body = JSON.parse(body);
+            console.log("Title: "+ body.Title + "\nReleased Year: "+ body.Year + "\nIMDB Rating: "+ body.imdbRating + "\nRotten Tomatoes Rating: "+ body.tomatoRating + "\nCountry: "+ body.Country + "\nLanguage: "+ body.Langauge + "\nPlot: "+ body.Plot + "\nActors: "+ body.Actors)
+        }
+        else{
+            console.log('Error occured')
+        }
+        if(movie === "Mr.NoBody"){
+            console.log("------------------")
+            console.log("If you haven't watched 'Mr.Nobody,' then you should: http://www.imdb.com/title/tt0485947/ ")
+            console.log("It's on Netflix!")
+        }
+    });
 }
