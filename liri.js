@@ -26,7 +26,7 @@ function spotifyThisSong(song){
         if ( !err ) {
             for(var i = 0; i < data.tracks.items.length; i++){
                 var songData = data.tracks.items[i];
-                console.log("Artist: " + songData.artists);
+                console.log("Artist: " + songData.artists.name);
                 console.log("Song: " + songData.name)
                 console.log("Preview URL: " + songData.external_urls)
                 console.log("Album: " + songData.album.name)
