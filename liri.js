@@ -133,17 +133,19 @@ function justDoIt() {
 
         // var value = data[1].split(',')
         // // getSongs(value)
-        spotifyThisSong(secondCommand)
-    });
-    switch (firstCommand) {
-        case ('concert-this'):
-            getBands(secondCommand)
-            break;
-        case ('spotify-this-song'):
-            spotifyThisSong(secondCommand)
-            break;
+        // spotifyThisSong(secondCommand)
 
-        case ('movie-this'):
-            findMovie(secondCommand)
-            break;
-    }
+        switch (firstCommand) {
+            case ('concert-this'):
+                getBands(secondCommand)
+                break;
+            case ('spotify-this-song'):
+                spotifyThisSong(secondCommand)
+                break;
+    
+            case ('movie-this'):
+                findMovie(secondCommand)
+                break;
+        }
+    });
+}
