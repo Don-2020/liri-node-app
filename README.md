@@ -1,7 +1,7 @@
 # liri Bot
 
 # How to run Liri Bot
-  
+    *Step 1: 
 #
 # Technology Used
     *Node.js
