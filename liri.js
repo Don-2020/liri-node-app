@@ -51,7 +51,7 @@ function getBands(artist) {
         var eventDate = moment(response.data[0].datetime).format('MM/DD/YYYY')
         console.log("Date of the EventL " + eventDate)
 
-        console.log('\n------------------\n\n\n')
+        console.log('\n------------------\n')
         console.log("Name of the venue: " + response.data[1].venue.name)
         console.log("Venue location: " + response.data[1].venue.city + ", " + response.data[1].venue.region)
         var eventDate = moment(response.data[1].datetime).format('MM/DD/YYYY')
