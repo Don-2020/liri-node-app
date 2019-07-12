@@ -2,8 +2,8 @@
 LIRI is like iPhone's SIRI. However, while SIRI is a Speech Interpretation and Recognition Interface, LIRI is a _Language_ Interpretation and Recognition Interface. LIRI will be a command line node app that takes in parameters and gives you back data.
 
 # How to run Liri Bot 
-    * Step Two: node liri.js concert-this `<artist/band name here>` This command will find three events/concert that inputed artist/bands will be apart of. Then display the following information inside the terminal/bash
-        * Name of the venue
+* Step Two: node liri.js concert-this `<artist/band name here>` This command will find three events/concert that inputed artist/bands will be apart of. Then display the following information inside the terminal/bash
+       * Name of the venue
         * Venue location
         * Date of the Event (use moment to format this as "MM/DD/YYYY")
         
