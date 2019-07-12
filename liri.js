@@ -3,7 +3,8 @@ require("dotenv").config();
 var Spotify = require('node-spotify-api');
 var keys = require("../liri-node-app/key");
 var axios = require("axios");
-var request = require('request');
+var moment = require("moment")
+
 var fs = require('fs');
 
 var spotify = new Spotify(keys.spotify);
@@ -14,7 +15,8 @@ var secondCommand = process.argv.slice(3).join(" ");
 
 switch (firstCommand) {
     case ('concert-this'):
-        concertThis(secondCommand)
+        getBands(secondCommand)
+        break;
     case ('spotify-this-song'):
         if (secondCommand) {
             spotifyThisSong(secondCommand)
@@ -33,6 +35,35 @@ switch (firstCommand) {
         }
     case ('do-what-it-says'):
     // doWhatItSay()
+}
+
+function getBands(artist){
+    var bandURL = "https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp"
+    axios.get(bandURL).then(function(response){
+    //  console.log(response);
+
+         console.log('\n------------------\n')
+         console.log("Name of the venue: "+response.data[0].venue.name)
+         console.log("Venue location: "+response.data[0].venue.city+", "+response.data[0].venue.region)
+         var eventDate = moment(response.data[0].datetime).format('MM/DD/YYYY')
+         console.log("Date of the EventL "+eventDate)
+
+    console.log('\n------------------\n\n\n')
+         console.log("Name of the venue: "+response.data[1].venue.name)
+         console.log("Venue location: "+response.data[1].venue.city+", "+response.data[1].venue.region)
+         var eventDate = moment(response.data[1].datetime).format('MM/DD/YYYY')
+         console.log("Date of the EventL "+eventDate)
+
+         console.log('\n------------------\n')
+         console.log("Name of the venue: "+response.data[2].venue.name)
+         console.log("Venue location: "+response.data[2].venue.city+", "+response.data[2].venue.region)
+         var eventDate = moment(response.data[2].datetime).format('MM/DD/YYYY')
+         console.log("Date of the EventL "+eventDate)
+ 
+    })
+    .catch(function(error){
+        console.log(error);
+    })
 }
 
 function spotifyThisSong(song) {
@@ -59,8 +90,6 @@ function spotifyThisSong(song) {
             console.log('Error occurred: ' + err);
             return;
         }
-
-
     });
 }
 
